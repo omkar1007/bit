@@ -1,12 +1,143 @@
 <!DOCTYPE html>
-<html>
-<head>
-<title>Page Title</title>
-</head>
-<body>
+<html lang="en-US">
+  <head>
+    <title>Web Chat: Full-featured bundle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script crossorigin="anonymous" src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
+    <style>
+      html,
+        
+        const styleOptions = {
+    botAvatarImage: 'https://docs.microsoft.com/en-us/azure/bot-service/v4sdk/media/logo_bot.svg?view=azure-bot-service-4.0',
+    botAvatarInitials: 'BF',
+    userAvatarImage: 'https://github.com/compulim.png?size=64',
+    userAvatarInitials: 'WC'
+}
+        /* Media Query for low resolution  Tablets, Ipads */ 
+        @media (min-width: 481px) and (max-width: 767px) { 
+            
+      #webchat {
+          display: block;
+        height: 100%;
+        width: 100%;
+          
+           position: fixed;
+         top  : 35px;
+          right: 1px;
+        bottom: 10px;
+       
+        
+      }
+          #webchat>* {
+    font-size: 12px;
+                  }
+         
+        } 
+          
+        /* Media Query for Tablets Ipads portrait mode */ 
+        @media (min-width: 768px) and (max-width: 1024px){ 
+            
+      #webchat {
+          display: block;
+        height: 85%;
+        width: 100%;
+          
+          
+        position: fixed;
+         top  : 5px;
+          right: 1px;
+        bottom: 20px;
+        
+      }
+          #webchat>* {
+    font-size: 12px;
+                  }
+        
+        } 
+          
+        /* Media Query for Laptops and Desktops */ 
+        @media (min-width: 1025px) and (max-width: 1280px){ 
+            
+      #webchat {
+          display: block;
+       
+          width: 400px;
+            height: 500px;
+        position: fixed;
+         top  : 105px;
+          right: 1px;
+        bottom: 0px; 
+      }
+          #webchat>* {
+    font-size: 1px;
+                  }
+            
+           
+        } 
+          
+        /* Media Query for Large screens */ 
+        @media (min-width: 1281px) { 
+            
+      #webchat {
+          display: block;
+        
+          width: 400px;
+            height: 500px;
+        position: fixed;
+         top  : 105px;
+          right: 1px;
+        bottom: 0px;
+        
+      }
+          #webchat>* {
+    font-size: 16px;
+                  }
+         
+        } 
+          
+    </style>
+  </head>
+  <body>
+    <div id="webchat" role="main"></div>
+    <script>
 
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
+	  
+(async function () {
+  // Note, for the simplicity of this example, we are generating the Direct Line token on client side;
+  // however, this is not a recommended practice and you should create and manage your tokens from the server. 
+  // You should never put the Direct Line secret in the browser or client app.
+  // https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-authentication
+  const secret = 'wVCcUdOkEmo.mke3of-wwyst3JyBdgBea2N_0disRcrN6n_aE97XAbk';
+  const res = await fetch('https://directline.botframework.com/v3/directline/tokens/generate', { 
+    headers: {
+      Authorization: `Bearer ${secret}`,
+    },
+    method: 'POST'
+  });
+  const { token } = await res.json();
 
-</body>
+  const store = window.WebChat.createStore(
+    {},
+    ({ dispatch }) => next => action => {
+      if (action.type === 'DIRECT_LINE/CONNECT_FULFILLED') {
+        dispatch({
+          type: 'WEB_CHAT/SEND_EVENT',
+          payload: {
+            name: 'webchat/join',
+          }
+        });
+      }
+      return next(action);
+    }
+  );
+
+  window.WebChat.renderWebChat({
+    directLine: window.WebChat.createDirectLine({ secret: 'wVCcUdOkEmo.mke3of-wwyst3JyBdgBea2N_0disRcrN6n_aE97XAbk' }),
+    store
+  }, document.getElementById('webchat'));
+
+  document.querySelector('#webchat > *').focus();
+})().catch(err => console.error(err));
+    </script>
+  </body>
 </html>
