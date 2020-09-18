@@ -11,13 +11,6 @@
             bubbleFromUserBackground: 'rgba(0, 255, 0, .1)'
          });
         
-        const styleOptions = {
-    botAvatarImage: 'https://docs.microsoft.com/en-us/azure/bot-service/v4sdk/media/logo_bot.svg?view=azure-bot-service-4.0',
-    botAvatarInitials: 'BF',
-    userAvatarImage: 'https://github.com/compulim.png?size=64',
-    userAvatarInitials: 'WC'
-
-         }
 
 	       
       #webchat {
@@ -154,11 +147,18 @@
     }
   );
 
+        const styleOptions = {
+    botAvatarImage: 'https://docs.microsoft.com/en-us/azure/bot-service/v4sdk/media/logo_bot.svg?view=azure-bot-service-4.0',
+    botAvatarInitials: 'BF',
+    userAvatarImage: 'https://github.com/compulim.png?size=64',
+    userAvatarInitials: 'WC'
+
+         }
+	
+	
   window.WebChat.renderWebChat({
     directLine: window.WebChat.createDirectLine({ secret: 'wVCcUdOkEmo.mke3of-wwyst3JyBdgBea2N_0disRcrN6n_aE97XAbk' }),
-    store ,
-    
-    directLine : window.WebChat.createDirectLine({ secret: 'wVCcUdOkEmo.mke3of-wwyst3JyBdgBea2N_0disRcrN6n_aE97XAbk' }),
+    store ,styleOptions
     
             
   }, document.getElementById('webchat'));
