@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="en-US">
+	
+import React, { useState, useEffect } from 'react';
+import ReactWebChat, { createDirectLine, createStore } from 'botframework-webchat';
+import directLineDisconnect from 'botframework-webchat-core/lib/actions/disconnect'
   <head>
     <title>Web Chat: Full-featured bundle</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -178,6 +182,50 @@
 
   document.querySelector('#webchat > *').focus();
 })().catch(err => console.error(err));
+	const initializeDirectLine = async setDirectLine => {
+  const res = await fetch('http://localhost:3978/directline/token', { method: 'POST' });
+  const { token } = await res.json();
+  setDirectLine(createDirectLine({ token }));
+};
+
+const WebChat = props => {
+  const { directLine } = props;
+
+  return directLine
+    ? <ReactWebChat className={'chat'} {...props} />
+    : "Connecting..."
+}
+
+export default () => {
+  const [directLine, setDirectLine] = useState();
+  useEffect(() => {
+    initializeDirectLine(setDirectLine);
+  }, []);
+
+  const storeMiddleware = () => next => action => {
+    if (action.type === 'DIRECT_LINE/DISCONNECT_FULFILLED') {
+      setDirectLine(null);
+      setStore(createStore({}, storeMiddleware));
+      initializeDirectLine(setDirectLine);
+    }
+    return next(action)
+  };
+
+  const [store, setStore] = useState(createStore({}, storeMiddleware));
+
+  const disconnect = () => store.dispatch(directLineDisconnect());
+
+  return (
+    <div className={app}>
+      <div className='details'>
+        <button onClick={disconnect}>Disconnect</button>
+      </div>
+      <div className='wrapper'>
+        <WebChat directLine={directLine} store={store}/>
+      </div>
+    </div>
+  )
+};	  
     </script>
   </body>
 </html>
