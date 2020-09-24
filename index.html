@@ -108,8 +108,16 @@
     </style>
   </head>
   <body>
-    <div style="background-color:#ffffff;" id="webchat" role="main"border:4px #6699ff;  height: 40%; width: 40%;></div>
-    <script>
+  const disconnect = () => store.dispatch(directLineDisconnect());	  
+    <div className={app}>
+      <div className='details'>
+        <button onClick={disconnect}>Disconnect</button>
+      </div>
+      <div className='wrapper'>
+        <WebChat directLine={directLine} store={store}/>
+      </div>
+    </div>
+	  <script>
 
 	  
 (async function () {
