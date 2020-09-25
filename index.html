@@ -6,12 +6,13 @@
     <script crossorigin="anonymous" src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
     <style>
       html,
-	body { margin-top: 50px; height: 50% }
+	body { margin-top: 10px; height: 50% }
 
 	       
       #webchat {
           display: block;
-	              margin-top: 50px;
+	              margin-top: 10px;
+	      margin-bottom: 2px;
         height: 100%;
         width: 100%;
            position: fixed;
@@ -19,7 +20,8 @@
         
       }
           #webchat>* {
-		  margin-top: 50px;
+		  margin-top: 10px;
+		  margin-bottom: 2px;
     font-size: 14px;
                   }
          
@@ -109,7 +111,7 @@
           */
     </style>
   </head>
-  <body margin-top: 50px;>
+  <body margin-top: 10px; margin-bottom: 2px;>
     <div style="background-color:#ffffff;" id="webchat" role="main"border:4px #6699ff;  height: 40%; width: 40%;></div>
     <script>
 
@@ -146,6 +148,7 @@
   );
 
         const styleOptions = {
+		rootHeight:'95%';
     //botAvatarImage: 'https://docs.microsoft.com/en-us/azure/bot-service/v4sdk/media/logo_bot.svg?view=azure-bot-service-4.0',
     bubbleBackground: 'rgba(51, 153, 255, .1)',
 	//	botAvatarInitials: 'VI',
