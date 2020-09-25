@@ -11,9 +11,9 @@
 	       
       #webchat {
           display: block;
-        height: 90%;
+        height: 100%;
         width: 100%;
-           position: relative;
+           position: fixed;
        
         
       }
@@ -106,10 +106,9 @@
         } 
           */
     </style>
-	  
-    
   </head>
   <body>
+    <div style="background-color:#ffffff;" id="webchat" role="main"border:4px #6699ff;  height: 40%; width: 40%;></div>
     <script>
 
 	  
@@ -171,7 +170,6 @@
 
   document.querySelector('#webchat > *').focus();
 })().catch(err => console.error(err));
-    
-	  </script>
+    </script>
   </body>
 </html>
