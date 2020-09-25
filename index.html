@@ -6,15 +6,15 @@
     <script crossorigin="anonymous" src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
     <style>
       html,
-	  body { height: 70% }
+	body { height: 90% }
+
 	       
       #webchat {
           display: block;
-	      top: 20px;
         height: 100%;
         width: 100%;
            position: fixed;
-      
+       
         
       }
           #webchat>* {
@@ -108,8 +108,8 @@
     </style>
   </head>
   <body>
-    <div style="background-color:#ffffff;" ></div>
-    <script >
+    <div style="background-color:#ffffff;" id="webchat" role="main"border:4px #6699ff;  height: 40%; width: 40%;></div>
+    <script>
 
 	  
 (async function () {
@@ -144,11 +144,6 @@
   );
 
         const styleOptions = {
-		
-		rootTop:'20px',
-		 rootHeight: '90%',
-        rootWidth: '100%',
-		 background: 'rgba(51, 153, 255, .1)',
     //botAvatarImage: 'https://docs.microsoft.com/en-us/azure/bot-service/v4sdk/media/logo_bot.svg?view=azure-bot-service-4.0',
     bubbleBackground: 'rgba(51, 153, 255, .1)',
 	//	botAvatarInitials: 'VI',
