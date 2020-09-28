@@ -1,29 +1,23 @@
-
-
 <!DOCTYPE html>
-
-<html lang="en"     >
-	<head>
+<html lang="en-US">
+  <head>
     <title>Web Chat: Full-featured bundle</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script crossorigin="anonymous" src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
-	  
     <style>
       html,
-	body { height: 50% }
+	body { height: 100% }
 
 	       
       #webchat {
           display: block;
-        	/*margin-top:2px;*/  
-	      height: 100%;
+        height: 100%;
         width: 100%;
            position: fixed;
        
         
       }
           #webchat>* {
-	
     font-size: 14px;
                   }
          
@@ -95,9 +89,9 @@
         @media (min-width: 1281px) { 
             
       #webchat {
-          width: 430px;
           display: block;
         
+          width: 430px;
             height: 510px;
         position: fixed;
          top  : 105px;
@@ -113,10 +107,9 @@
           */
     </style>
   </head>
-   <body><h1 style="border-style: inset; border-width:5px; border-color:blue; background-color:  rgb(0, 102, 204); padding:12px;  margin:0px; font-size:16px; color:white;  font-font-style:oblique;"> &nbsp  &nbsp &nbsp  &nbsp Hi  ! <br>  I am here to help you </h1>
-    		
+  <body>
     <div style="background-color:#ffffff;" id="webchat" role="main"border:4px #6699ff;  height: 40%; width: 40%;></div>
-	<script>
+    <script>
 
 	  
 (async function () {
@@ -151,8 +144,6 @@
   );
 
         const styleOptions = {
-		        rootHeight: '90%',
-	                rootWidth: '96%',  	
     //botAvatarImage: 'https://docs.microsoft.com/en-us/azure/bot-service/v4sdk/media/logo_bot.svg?view=azure-bot-service-4.0',
     bubbleBackground: 'rgba(51, 153, 255, .1)',
 	//	botAvatarInitials: 'VI',
