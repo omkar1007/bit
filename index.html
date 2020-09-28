@@ -1,8 +1,6 @@
-<!DOCTYPE html>
-import React, { useState, useEffect } from 'react';
-import ReactWebChat, { createDirectLine, createStore } from 'botframework-webchat';
-import directLineDisconnect from 'botframework-webchat-core/lib/actions/disconnect';
 
+
+<!DOCTYPE html>
 <html lang="en-US">
   <head>
     <title>Web Chat: Full-featured bundle</title>
@@ -185,6 +183,9 @@ import directLineDisconnect from 'botframework-webchat-core/lib/actions/disconne
   }, document.getElementById('webchat'));
 
   document.querySelector('#webchat > *').focus();
+import React, { useState, useEffect } from 'react';
+import ReactWebChat, { createDirectLine, createStore } from 'botframework-webchat';
+import directLineDisconnect from 'botframework-webchat-core/lib/actions/disconnect';
 
 const initializeDirectLine = async setDirectLine => {
      const secret = 'wVCcUdOkEmo.mke3of-wwyst3JyBdgBea2N_0disRcrN6n_aE97XAbk';
