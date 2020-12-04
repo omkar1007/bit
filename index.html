@@ -122,7 +122,7 @@
   // however, this is not a recommended practice and you should create and manage your tokens from the server. 
   // You should never put the Direct Line secret in the browser or client app.
   // https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-authentication
-  const secret = 'wVCcUdOkEmo.mke3of-wwyst3JyBdgBea2N_0disRcrN6n_aE97XAbk';
+  const secret = 'OZ0GkRMxSFw.nuUjZJKM6tqIvrQoJ13UKjfAbUhE88SY1J5EHPqe160';
   const res = await fetch('https://directline.botframework.com/v3/directline/tokens/generate', { 
     headers: {
       Authorization: `Bearer ${secret}`,
@@ -175,7 +175,7 @@
 	
 	
   window.WebChat.renderWebChat({
-    directLine: window.WebChat.createDirectLine({ secret: 'wVCcUdOkEmo.mke3of-wwyst3JyBdgBea2N_0disRcrN6n_aE97XAbk' }),
+    directLine: window.WebChat.createDirectLine({ secret: 'OZ0GkRMxSFw.nuUjZJKM6tqIvrQoJ13UKjfAbUhE88SY1J5EHPqe160' }),
     store ,styleOptions
     
             
